@@ -9,6 +9,9 @@ router.get('/', function(req, res, next) {
 // REF
 // http://expressjs.com/en/guide/routing.html
 // https://github.com/t1t1/auto_reply
+// https://devcenter.heroku.com/articles/logging
+// https://devcenter.heroku.com/articles/config-vars
+// https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-config-vars
 
 router.get('/keyboard', function(req, res, next) {
 // res sample
@@ -20,7 +23,7 @@ router.get('/keyboard', function(req, res, next) {
 
   res.json({
     "type" : "buttons",
-    "buttons" : ["반갑습니다. 카카오톡ID {{kakaoid}}를 찾아주세요."]
+    "buttons" : ["반갑습니다. 카카오톡ID " + (process.env.KAKAO_ID || "{{kakaoid}}") + "를 찾아주세요."]
   });
 });
 
