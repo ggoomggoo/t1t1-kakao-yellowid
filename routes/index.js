@@ -21,9 +21,10 @@ router.get('/keyboard', function(req, res, next) {
 //     "buttons" : ["선택 1", "선택 2", "선택 3"]
 // }
 
+  console.log(req);
   res.json({
     "type" : "buttons",
-    "buttons" : ["반갑습니다. 카카오톡ID " + (process.env.KAKAO_ID || "{{kakaoid}}") + "를 찾아주세요."]
+    "buttons" : ["반갑습니다. "]
   });
 });
 
@@ -71,9 +72,10 @@ router.post('/message', function(req, res, next) {
 //   }
 // }
 
+  console.log(req);
   res.json({
     message: {
-      text: req.body.user_key + ' | ' + req.body.content + ' | ' + 'sended',
+      text: "카카오톡ID " + (process.env.KAKAO_ID || "{{kakaoid}}") + "를 찾아주세요. \n" + req.body.user_key + ' | ' + req.body.content + ' | ' + 'sended',
       photo: {
         url: 'http://loremflickr.com/320/240', // random image url from http://loremflickr.com/
         width: 320,
